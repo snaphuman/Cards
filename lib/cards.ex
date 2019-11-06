@@ -15,6 +15,10 @@ defmodule Cards do
     end
   end
 
+  @doc """
+    Returns a randomized list of cards
+  """
+
   def shuffle(deck) do
     Enum.shuffle(deck)
   end
@@ -50,6 +54,16 @@ defmodule Cards do
     Enum.split(deck, hand_size)
   end
 
+  @doc """
+    Saves a deck into a file
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> Cards.save(deck, "my_deck")
+      :ok
+
+  """
   def save(deck, filename) do
     binary = :erlang.term_to_binary(deck)
     File.write(filename, binary)
