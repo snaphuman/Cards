@@ -33,7 +33,7 @@ defmodule Cards do
       iex> deck = Cards.create_deck
       iex> {hand, deck} = Cards.deal(deck, 1)
       iex> hand
-      ["Ace of spades"]
+      ["Ace of Spades"]
 
   """
   def deal(deck, hand_size) do
