@@ -9,9 +9,9 @@ defmodule Discuss.User.Topic do
   end
 
   @doc false
-  def changeset(topic, attrs \\ %{}) do
+  def changeset(topic, params \\ %{}) do
     topic
-    |> cast(attrs, [:title])
+    |> cast(params, [:title])
     |> validate_required([:title])
   end
 end
