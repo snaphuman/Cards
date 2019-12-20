@@ -12,5 +12,18 @@ defmodule DiscussWeb.AuthController do
 
     changeset = Profile.changeset(%Profile{}, user_params)
 
+    insert_or_update_user(changeset)
+
   end
+
+  defp insert_or_update_user(changeset) do
+
+    case Repo.get_by(Profile, email: changeset.changes.email) do
+      nil ->
+        Repo.insert(changeset)
+      user ->
+        {:ok, user}
+    end
+  end
+
 end
