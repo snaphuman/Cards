@@ -9,4 +9,10 @@ defmodule Discuss.User.Profile do
 
     timestamps()
   end
+
+  def changeset(user, params \\ %{}) do
+    user
+    |> cast(params, [:email, :provider, :token])
+    |> validate_required([:email, :provider, :token])
+  end
 end
