@@ -12,8 +12,25 @@ defmodule DiscussWeb.AuthController do
 
     changeset = Profile.changeset(%Profile{}, user_params)
 
-    insert_or_update_user(changeset)
+    signin(conn, changeset)
 
+  end
+
+  defp signin(conn, changeset) do
+
+    case insert_or_update_user(changeset) do
+
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "Welcome back!")
+        |> put_session(:user_id, user.id)
+        |> redirect(to: Routes.topic_path(conn, :index))
+
+      {:error, _reason} ->
+        conn
+        |> put_flash(:error, "Error during signin in")
+        |> redirect(to: Routes.topic_path(conn, :index))
+    end
   end
 
   defp insert_or_update_user(changeset) do
