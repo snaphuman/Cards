@@ -1,6 +1,8 @@
 defmodule DiscussWeb.UserSocket do
   use Phoenix.Socket
 
+  channel "comments:*", Discuss.CommentsChannel
+
   def connect(_params, socket, _connect_info) do
     {:ok, socket}
   end
