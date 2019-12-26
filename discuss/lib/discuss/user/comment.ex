@@ -6,9 +6,11 @@ defmodule Discuss.User.Comment do
     field :content, :string
     belongs_to :user, Discuss.User.Profile
     belongs_to :topic, Discuss.User.Topic
+
+    timestamps();
   end
 
-  def changesets(comment, params \\ %{}) do
+  def changeset(comment, params \\ %{}) do
     comment
     |> cast(params, [:content])
     |> validate_required([:content])
