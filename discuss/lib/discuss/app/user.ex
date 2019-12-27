@@ -1,8 +1,8 @@
-defmodule Discuss.User.Profile do
+defmodule Discuss.App.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Discuss.User.{Topic, Comment}
+  alias Discuss.App.{Topic, Comment}
 
   schema "users" do
     field :email, :string

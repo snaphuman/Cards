@@ -4,7 +4,7 @@
   <%= for topic <- @topics do %>
       <li class="collection-item">
         <%= topic.title %>
-        <%= unless is_nil @conn.assigns.user && @conn.assigns.user.id == topic.profile_id do %>
+        <%= unless is_nil @conn.assigns.user && @conn.assigns.user.id == topic.user_id do %>
         <div class="right">
           <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic) %>
           <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic), method: :delete %>

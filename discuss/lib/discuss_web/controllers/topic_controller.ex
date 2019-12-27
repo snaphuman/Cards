@@ -1,7 +1,7 @@
 defmodule DiscussWeb.TopicController do
   use DiscussWeb, :controller
 
-  alias Discuss.User.Topic
+  alias Discuss.App.Topic
 
   plug Discuss.Plugs.RequireAuth when action in
   [:new, :create, :edit, :update, :delete]
@@ -80,7 +80,7 @@ defmodule DiscussWeb.TopicController do
   def check_topic_owner(conn, _params) do
     %{params: %{"id" => topic_id}} = conn
 
-    if Repo.get(Topic, topic_id).profile_id == conn.assigns.user.id do
+    if Repo.get(Topic, topic_id).user_id == conn.assigns.user.id do
       conn
     else
       conn

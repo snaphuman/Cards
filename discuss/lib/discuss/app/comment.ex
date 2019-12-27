@@ -1,4 +1,4 @@
-defmodule Discuss.User.Comment do
+defmodule Discuss.App.Comment do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -6,8 +6,8 @@ defmodule Discuss.User.Comment do
 
   schema "comments" do
     field :content, :string
-    belongs_to :user, Discuss.User.Profile
-    belongs_to :topic, Discuss.User.Topic
+    belongs_to :user, Discuss.App.User
+    belongs_to :topic, Discuss.App.Topic
 
     timestamps();
   end
