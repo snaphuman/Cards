@@ -4,6 +4,8 @@ defmodule Discuss.App.User do
 
   alias Discuss.App.{Topic, Comment}
 
+  @derive {Jason.Encoder, only: [:email]}
+
   schema "users" do
     field :email, :string
     field :provider, :string

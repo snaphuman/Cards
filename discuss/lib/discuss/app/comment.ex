@@ -4,7 +4,7 @@ defmodule Discuss.App.Comment do
 
   alias Discuss.App.{User, Topic}
 
-  @derive {Jason.Encoder, only: [:content]}
+  @derive {Jason.Encoder, only: [:content, :user]}
 
   schema "comments" do
     field :content, :string
